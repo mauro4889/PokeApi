@@ -1,46 +1,94 @@
 body
     background-color: #fffffe
+    margin: auto
+    padding: 0
 
 .container
-    background-color: #6246ea
-    width: 90vw
-    height: 70vh
+    background-color: #DC0A2D
+    width: 97vw
+    height: 120vh
     margin: auto
+    border: solid 5px black
+
+.container__header
+    width: 100%
+    display: flex
+    justify-content: space-between
+.container__circles
+    height: 180px
+    width: 60%
+    display: flex
+    .circle
+        background-color: #1A6E96
+        width: 15%
+        height: 50%
+        border-radius: 50%
+        margin: 5%
+        border: solid 2px black
+    .mini__circle
+        width: 5%
+        height: 20%
+        border-radius: 50%
+        margin: 2%
+        border: solid 2px black
+        margin-top: 8%
+
+.red
+    background-color: red
+.yellow
+    background-color: yellow
+.green
+    background-color: green
 
 h1
-    margin-left: 40%
+    margin-right: 10%
+
 .container__cards
     margin: auto
     width: 100%
-    height: 90%
+    height: 50%
     border: none
-    display: grid
-    grid-template-columns: repeat(5, 1fr)
-    grid-template-rows: repeat(2, 1fr)
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    border-top: solid 1px black
 
 .card
     background-color: #fffffe
     border: none
-    width: 90%
-    height: 60%
+    width: 25%
+    height: 50%
     margin: 2%
+    border: solid 5px black
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
+    cursor: pointer
+    h2
+        margin-top: 5%
+    h3
+        margin-bottom: 0
     img
-        width: 50%
-        height: 30%
+        width: 20%
+        height: 40%
         margin: auto
 .container__buttom
-    margin-top: 5%
+    margin-top: 10%
     display: flex
     justify-content: center
     flex-direction: row-reverse
-    input
-        border: none
-        height: 40px
-        margin: 5%
-        margin-top: 0
-        background-color: #6246ea
-        color: #fffffe
+
+.buttoms
+    border: none
+    height: 40px
+    margin: 5%
+    margin-top: 0
+    background-color: #000000
+    color: #fffffe
+    font-weight: bolder
+    cursor: pointer
+
+.disabled
+    background-color: #00000057
+    cursor: not-allowed

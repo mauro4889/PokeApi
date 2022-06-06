@@ -10,20 +10,28 @@
 </head>
 
 <body>
-    <h1><img src="./assets/img/pokeapi_256.png" alt="PokeAPI"></h1>
     <div class="container">
+        <div class="container__header">
+            <div class="container__circles">
+                <div class="circle"></div>
+                <div class="mini__circle red"></div>
+                <div class="mini__circle yellow"></div>
+                <div class="mini__circle green"></div>
+            </div>            
+            <h1><img src="./assets/img/pokeapi_256.png" alt="PokeAPI"></h1>
+        </div>        
         <div class="container__cards">
 
         </div>
         <div class="container__buttom">
-            <input type="button" value="SIGUIENTE" id="btnNext">
-            <input type="button" value="ANTERIOR" id="btnPrev">
+            <input type="button" value="SIGUIENTE" class="buttoms" id="btnNext">
+            <input type="button" value="ANTERIOR" class="buttoms" id="btnPrev">
         </div>
     </div>
     <template class="template__card" id="templateCard">
-        <div class="card">
-            <h2></h2>
+        <div class="card" id="card">
             <h3></h3>
+            <h2></h2>            
             <img src="" alt="">
         </div>        
     </template>

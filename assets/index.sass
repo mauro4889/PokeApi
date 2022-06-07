@@ -1,11 +1,11 @@
 body
     background-color: #fffffe
-    margin: auto
+    margin: 0
     padding: 0
 
 .container
     background-color: #DC0A2D
-    width: 97vw
+    max-width: 415px
     height: 120vh
     margin: auto
     border: solid 5px black
@@ -14,13 +14,16 @@ body
     width: 100%
     display: flex
     justify-content: space-between
+    border-bottom: solid 1px black
+
 .container__circles
-    height: 180px
+    height: 20%px
     width: 60%
     display: flex
+    margin-top: 2%
     .circle
         background-color: #1A6E96
-        width: 15%
+        width: 20%
         height: 50%
         border-radius: 50%
         margin: 5%
@@ -31,7 +34,7 @@ body
         border-radius: 50%
         margin: 2%
         border: solid 2px black
-        margin-top: 8%
+        margin-top: 10%
 
 .red
     background-color: red
@@ -41,7 +44,38 @@ body
     background-color: green
 
 h1
-    margin-right: 10%
+    width: 40%
+    height: 10%
+    margin: 2%
+    margin-bottom: 0
+    img
+        width: 100%
+
+.container__search
+    width: 100%
+
+.input__search
+    width: 40%
+    height: 2em
+    margin-top: 5%
+    margin-left: 5%
+    border: solid 5px black
+
+.btn__search, .btn__all
+    height: 2em 
+    width: 25%
+    margin-top: 5%
+    margin-left: 20%
+    background-color: #000000
+    color: #fffffe
+    border: none
+    cursor: pointer
+    font-weight: bolder
+
+.btn__all
+    margin-left: 40%
+
+
 
 .container__cards
     margin: auto
@@ -51,7 +85,7 @@ h1
     display: flex
     flex-wrap: wrap
     justify-content: center
-    border-top: solid 1px black
+    
 
 .card
     background-color: #fffffe
@@ -59,6 +93,7 @@ h1
     width: 25%
     height: 50%
     margin: 2%
+    margin-top: 5%
     border: solid 5px black
     display: flex
     flex-direction: column
@@ -67,14 +102,15 @@ h1
     cursor: pointer
     h2
         margin-top: 5%
+        font-size: 100%
     h3
         margin-bottom: 0
     img
-        width: 20%
+        width: 40%
         height: 40%
         margin: auto
 .container__buttom
-    margin-top: 10%
+    margin-top: 20%
     display: flex
     justify-content: center
     flex-direction: row-reverse

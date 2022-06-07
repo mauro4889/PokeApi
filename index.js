@@ -1,11 +1,14 @@
 const url = `https://pokeapi.co/api/v2/pokemon?limit=6&offset=0`;
+const urlSearch = 'https://pokeapi.co/api/v2/pokemon/'
 const templateCard = document.querySelector('#templateCard').content;
 const fragment = document.createDocumentFragment();
 const containerCard = document.querySelector('.container__cards');
 const card = document.getElementById('card')
 const btnnext = document.getElementById('btnNext');
 const btnprev = document.getElementById('btnPrev');
-
+const txtSearch = document.getElementById('textSearch');
+const btnSearch = document.getElementById('search');
+const btnAll = document.getElementById('btnAll');
 let next, prev;
 
 const mostrarapi = async(url) => {
@@ -63,11 +66,40 @@ const listaPokemon = async(url) => {
         const data = await res.json();
         mostrarPokemon(data);
     } catch (error) {
-        consoñe.log('Error al obtener la lista de pokemons');
+        console.log('Error al obtener la lista de pokemons');
     }
 };
 /* FIN LLAMADA  A LA API*/
 
+/* MOSTRAR BUSQUEDA */
+const mostrarBusqueda = (pokemon) =>{
+    templateCard.querySelector('h2').textContent = pokemon.name;
+    templateCard.querySelector('h3').textContent = `# ${pokemon.id}`;
+    templateCard.querySelector('img').src = pokemon.sprites.other.dream_world.front_default || json.sprites.front_default;
+    const clone = document.importNode(templateCard, true);
+    fragment.appendChild(clone);
+    containerCard.appendChild(fragment);
+}
+/* FIN MOSTRAR BUSQUEDA /
+
+/* BUSCAR POKEMON */
+const buscarPokemon = async(url) =>{
+    try{
+        const res = await fetch(url);
+        const data = await res.json();
+        mostrarBusqueda(data)
+    } catch(error){
+        let textoError = document.createTextNode('No se encontro el pokemon');
+        containerCard.appendChild(textoError);
+    }
+}
+/* FIN BUSCAR POKEMON */
+
+const limpiar = () =>{
+    while (containerCard.firstChild){
+        containerCard.removeChild(containerCard.firstChild);
+    }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     listaPokemon(url)
@@ -75,22 +107,25 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 btnnext.addEventListener('click', (e) =>{
-    while (containerCard.firstChild){
-        containerCard.removeChild(containerCard.firstChild);
-    }
+    limpiar();
     listaPokemon(next);
     mostrarapi(next)
 })
 btnprev.addEventListener('click', (e) =>{
-    while (containerCard.firstChild){
-        containerCard.removeChild(containerCard.firstChild);
-    }
+    limpiar();
     listaPokemon(prev);
     mostrarapi(prev);
 })
 
-containerCard.forEach(el =>{
-    card.addEventListener('click', ()=>{
+btnSearch.addEventListener('click', ()=>{
+   limpiar();
+    let encontrar = txtSearch.value.toLowerCase();
+    // mostrarapi(`${urlSearch}${encontrar}`)
+    buscarPokemon(`${urlSearch}${encontrar}`);
+})
 
-    })
-} )
+btnAll.addEventListener('click',() =>{
+    limpiar();
+    listaPokemon(url);
+    mostrarapi(url);
+})

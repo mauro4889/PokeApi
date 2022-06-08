@@ -1,5 +1,6 @@
 const url = `https://pokeapi.co/api/v2/pokemon?limit=6&offset=0`;
-const urlSearch = 'https://pokeapi.co/api/v2/pokemon/'
+const urlSearch = 'https://pokeapi.co/api/v2/pokemon/';
+const urlType = 'https://pokeapi.co/api/v2/type';
 const templateCard = document.querySelector('#templateCard').content;
 const fragment = document.createDocumentFragment();
 const containerCard = document.querySelector('.container__cards');
@@ -9,6 +10,7 @@ const btnprev = document.getElementById('btnPrev');
 const txtSearch = document.getElementById('textSearch');
 const btnSearch = document.getElementById('search');
 const btnAll = document.getElementById('btnAll');
+const select = document.getElementById('selectTipo');
 let next, prev;
 
 const mostrarapi = async(url) => {
@@ -58,12 +60,12 @@ const mostrarPokemon = async(datosApi) => {
     }
 }
 
-
 /* LLAMADA A LA API*/
 const listaPokemon = async(url) => {
     try {
         const res = await fetch(url);
         const data = await res.json();
+        console.log(data.results)
         mostrarPokemon(data);
     } catch (error) {
         console.log('Error al obtener la lista de pokemons');
@@ -95,6 +97,44 @@ const buscarPokemon = async(url) =>{
 }
 /* FIN BUSCAR POKEMON */
 
+/* MOSTRAR TIPOS*/
+const mostrarTipo = (url) =>{
+    const urlApi = url.results.map((type) => type.name)
+    urlApi.forEach(tipos =>{
+        const option = document.createElement('option');
+        option.textContent = tipos;
+        select.appendChild(option);
+    })
+}
+/* FIN MOSTRAR TIPOS*/
+
+/* BUSCAR TIPO*/
+const buscarTipo = async(url) =>{
+    try{
+        const res = await fetch(url);
+        const data = await res.json();
+        mostrarTipo(data);
+    } catch(error){
+        let textoError = document.createTextNode('No se encontraron tipos de pokemon');
+        containerCard.appendChild(textoError);
+    }
+}
+/* FIN BUSCAR TIPO */
+
+/* FILTRAR TIPO */
+const filtrarTipo = async(url) =>{
+    const infoTIpos = await mostrarapi(url);
+    console.log(infoTIpos)
+    if (!infoTIpos.error){
+        const dataObjt ={
+            results: infoTIpos.pokemon.map((pokemon) => pokemon.pokemon),
+            next: null,
+            prev: null,
+        }
+        console.log(dataObjt.results)
+    }
+}
+/* FIN FILTRAR TIPO */
 const limpiar = () =>{
     while (containerCard.firstChild){
         containerCard.removeChild(containerCard.firstChild);
@@ -102,8 +142,9 @@ const limpiar = () =>{
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    listaPokemon(url)
-    mostrarapi(url)
+    listaPokemon(url);
+    mostrarapi(url);
+    buscarTipo(urlType);
 })
 
 btnnext.addEventListener('click', (e) =>{
@@ -128,4 +169,9 @@ btnAll.addEventListener('click',() =>{
     limpiar();
     listaPokemon(url);
     mostrarapi(url);
+})
+
+select.addEventListener('change', ()=>{
+    console.log(`${urlType}/${select.value}`);
+    filtrarTipo(`${urlType}/${select.value}`);
 })

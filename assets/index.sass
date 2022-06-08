@@ -53,29 +53,37 @@ h1
 
 .container__search
     width: 100%
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    align-items: center
 
 .input__search
     width: 40%
     height: 2em
     margin-top: 5%
     margin-left: 5%
+    margin-right: 5%
     border: solid 5px black
 
 .btn__search, .btn__all
     height: 2em 
     width: 25%
     margin-top: 5%
-    margin-left: 20%
+    margin-left: 5%
+    margin-right: 5%
     background-color: #000000
     color: #fffffe
     border: none
     cursor: pointer
     font-weight: bolder
 
-.btn__all
-    margin-left: 40%
-
-
+.container__type
+    margin-right: 5%
+    margin-top: 3%
+    span
+        margin-right: 2%
+        font-weight: bolder
 
 .container__cards
     margin: auto

@@ -96,7 +96,7 @@ h1 img {
 
 .container__type {
   margin-right: 5%;
-  margin-top: 3%;
+  margin-top: 5%;
 }
 .container__type span {
   margin-right: 2%;
@@ -105,19 +105,21 @@ h1 img {
 
 .container__cards {
   margin: auto;
+  margin-top: 10%;
   width: 100%;
   height: 50%;
   border: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  overflow: auto;
 }
 
 .card {
   background-color: #fffffe;
   border: none;
   width: 25%;
-  height: 50%;
+  height: 40%;
   margin: 2%;
   margin-top: 5%;
   border: solid 5px black;
@@ -141,7 +143,7 @@ h1 img {
 }
 
 .container__buttom {
-  margin-top: 20%;
+  margin-top: 5%;
   display: flex;
   justify-content: center;
   flex-direction: row-reverse;
@@ -161,4 +163,46 @@ h1 img {
 .disabled {
   background-color: rgba(0, 0, 0, 0.3411764706);
   cursor: not-allowed;
+}
+
+.container__load {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  transition: all 1s ease;
+}
+
+#load {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  -webkit-animation: loading 1.5s linear infinite;
+          animation: loading 1.5s linear infinite;
+}
+#load img {
+  width: 100%;
+  height: 100%;
+}
+
+@-webkit-keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }/*# sourceMappingURL=index.css.map */
